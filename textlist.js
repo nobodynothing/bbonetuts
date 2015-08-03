@@ -49,6 +49,8 @@ var TextCollectionView = Backbone.View.extend({
         this.$el.html(div + btn);
     },
     initialize : function () {
+        collectionArray = []
+        this.listenTo(this.collection, 'del', this.deleteView)
         this.listenTo(this.collection, 'add', this.addView);
     },
     events : {
@@ -56,6 +58,7 @@ var TextCollectionView = Backbone.View.extend({
     },
     addModel : function () {
         this.collection.add({});
+
         // collection adds a model, fires add event, then listener calls this.addView(model)
     },
     addView : function (newModel) {
@@ -63,6 +66,11 @@ var TextCollectionView = Backbone.View.extend({
         var view = new TextView({model : newModel});
         view.render();
         this.$("#text-list").append(view.$el);
+    },
+    deleteView: function () {
+    var del = collectionArray.pop()
+    del.$el.remove
+    del.remove()
     },
 });
 

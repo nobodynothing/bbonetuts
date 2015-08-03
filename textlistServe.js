@@ -1,11 +1,9 @@
 
-$(document).ready( function () {
-
 var TextModel = Backbone.Model.extend({
     defaults : {"value" : ""},
     initialize : function () {
         this.fetch();
-    },    
+    },
     replace : function (str) {
         this.set("value", str);
         this.save();
@@ -74,6 +72,8 @@ var TextCollectionView = Backbone.View.extend({
     }
 });
 
+$(document).ready( function () {
+  
 var textCollection = new TextCollection();
 
 var textCollectionView = new TextCollectionView({ collection : textCollection});
